@@ -1,13 +1,14 @@
 const express = require("express");
 const cors = require("cors");
-const rateLimit = require("express-rate-limit");
 const morgan = require("morgan");
+const config = require("./config");
 
 // Routers
-const  usersRouter  = require("").router
-const  authRouter  = require("").router
-const  conversationRouter  = require("").router
 
+const  usersRouter  = require("./users/users.router").router
+const  authRouter  = require("./auth/auth.router").router
+//const  conversationRouter  = require("").router
+const participantsRouter = require('./participants/participants.router').router
 
 // Init express app
 const app = express();
@@ -25,9 +26,12 @@ if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 else app.use(morgan("combined"));
 
 // Endpoints
-app.use("/api/v1/users");
-app.use("/api/v1/auth" );
-app.use("/api/v1/conversations");
+app.use("/api/v1/users",usersRouter );
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/conversations", participantsRouter);
 
+app.listen(config.port, () => {
+    console.log(`Server started at port ${config.port}`)
+})
 
 module.exports = { app };
