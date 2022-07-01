@@ -29,6 +29,9 @@ else app.use(morgan("combined"));
 app.use("/api/v1/users",usersRouter );
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/conversations", participantsRouter);
+app.get('/', (req, res) => {
+    res.status(200).json({message: "Welcome to my whatsapp api"})
+})
 
 app.listen(config.port, () => {
     console.log(`Server started at port ${config.port}`)

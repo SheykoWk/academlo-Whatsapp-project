@@ -16,10 +16,12 @@ module.exports = {
     "dialect": config.db.test.dialect
   },
   "production": {
-    "username": config.db.production.username,
-    "password": config.db.production.password,
-    "database": config.db.production.database,
-    "host": config.db.production.host,
-    "dialect": config.db.production.dialect
+    "use_env_variable": config.db.production.url,
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    },
   }
 }
