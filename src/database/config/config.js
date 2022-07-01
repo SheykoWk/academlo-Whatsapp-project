@@ -16,7 +16,7 @@ module.exports = {
     "dialect": config.db.test.dialect
   },
   "production": {
-    "use_env_variable": config.db.production.url,
+    "use_env_variable":`${config.db.production.url}`,
     dialectOptions: {
         ssl: {
             require: true,
