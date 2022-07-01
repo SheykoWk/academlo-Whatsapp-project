@@ -5,7 +5,7 @@
   "main": "./src/app.js",
   "scripts": {
     "start": "node ./src/app.js",
-    "dev": "NODE_ENV=development nodemon ./src/app.js",
+    "dev": "NODE_ENV=production nodemon ./src/app.js",
     "eslint": "eslint --ignore-path .gitignore .",
     "prettier": "prettier --write '**/*.js' --ignore-path .gitignore .",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha ./src/**/test/*.test.js"
